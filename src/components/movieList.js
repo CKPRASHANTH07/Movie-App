@@ -80,15 +80,29 @@ const MovieList = () => {
             </ul>
             {selectedMovie && (
                 <div className='fixed top-0 left-0 w-full h-full bg-black bg-opacity-75 flex justify-center items-center'>
-                    <div className='bg-white p-8 rounded-lg max-w-md mx-auto'>
-                        <button className='mb-4' onClick={() => setSelectedMovie(null)}>Close</button>
-                        <h2 className='text-3xl mb-4'>{selectedMovie.Title}</h2>
-                        <img src={selectedMovie.Poster} alt={selectedMovie.Title} className='mb-4' />
+                    <div className='bg-black text-white border-2 w-full p-8 rounded-lg flex'>
+                        <div>
+                        <img src={selectedMovie.Poster} alt={selectedMovie.Title} className='h-full w-full mr-28 ' />
+                        </div>
+                        <div className='w-[1200px] pl-10 text-xl'>
+                        <button className='fixed mb-4 right-10 text-white p-1 rounded-xl bg-red-500 hover:bg-red-700' onClick={() => setSelectedMovie(null)}>Close</button>
+
+                        <h2 className='text-4xl mb-4 font-bold'>{selectedMovie.Title}</h2>
                         <p><strong>Year:</strong> {selectedMovie.Year}</p>
                         <p><strong>Genre:</strong> {selectedMovie.Genre}</p>
                         <p><strong>Director:</strong> {selectedMovie.Director}</p>
                         <p><strong>Actors:</strong> {selectedMovie.Actors}</p>
                         <p><strong>Plot:</strong> {selectedMovie.Plot}</p>
+                        <p><strong>Rated:</strong> {selectedMovie.Rated}</p>
+                        <p><strong>Released:</strong> {selectedMovie.Released}</p>
+                        <p><strong>Runtime:</strong> {selectedMovie.Runtime}</p>
+                        <p><strong>Writer:</strong> {selectedMovie.Writer}</p>
+                        <p><strong>Language:</strong> {selectedMovie.Language}</p>
+                        <p><strong>Country:</strong> {selectedMovie.Country}</p>
+                        <p><strong>Awards:</strong> {selectedMovie.Awards}</p>
+                        <p><strong>imdbRating:</strong> {selectedMovie.imdbRating}</p>
+                        <p><strong>BoxOffice:</strong> {selectedMovie.BoxOffice}</p>
+                        </div>
                     </div>
                 </div>
             )}
