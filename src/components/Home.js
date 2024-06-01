@@ -10,13 +10,13 @@ const Home = () => {
       <div className='p-2 h-[600px] md:p-32 space-y-8 space-x-4 relative bg-gradient-to-br from-black to-orange-400/40'>
       <img src={bggm1} alt='' className='absolute inset-0 w-full h-full object-cover z-0' />
         <div className='relative z-10 backdrop-blur-md space-y-10 bg-white/60 shadow-2xl rounded-2xl p-10'>
-          <h1 className='text-4xl md:text-5xl text-center font- bold'>Welcome to MovieMania</h1>
-          <p className='text-center'>
+          <h1 className='text-4xl md:text-5xl text-center font-bold'>Welcome to MovieMania</h1>
+          <p className='text-center text-2xl text-orange-500'>
             Discover and explore a world of movies. Find your favorite films, get detailed information, and create your personal watchlist.
           </p>
           <div className='space-x-4 text-center'>
-            <Link to='/signin' className='primary-button'>Sign In</Link>
-            <Link to='/signup' className='secondary-button'>Sign Up</Link>
+            <Link to='/signin' className=' bg-black text-white p-3 rounded-2xl'>Sign In</Link>
+            <Link to='/signup' className='bg-white text-black p-3 rounded-2xl'>Sign Up</Link>
           </div>
         </div>
       </div>

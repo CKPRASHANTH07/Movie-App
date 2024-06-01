@@ -7,6 +7,9 @@ import MovieList from "./components/Movie/MovieList";
 import Home from "./components/Home";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
+import PlayList from "./components/Movie/PlayList";
+import Lists from "./components/Movie/MovieList/Lists";
+import CreateList from "./components/Movie/CreateList";
 
 function App() {
   return (
@@ -18,9 +21,13 @@ function App() {
           <Route path="/Signin" element={<Signin />} />
           <Route path="/Signup" element={<Signup />} />
           <Route path="/movieList" element={<MovieList />} />
+          <Route path="/PlayList" element={<PlayList />} />
+          <Route path="/Lists" element={<Lists />} />
+          <Route path="/CreateList" element={<CreateList />} />
+
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
+        <ConditionalFooter />
       </Router>
     </div>
   );
@@ -28,7 +35,11 @@ function App() {
 
 function ConditionalHeader() {
   const location = useLocation();
-  return location.pathname !== '/' ? <Header /> : null;
+  return location.pathname !== '/'  && location.pathname !== '/signin'  && location.pathname !== '/Signup' ? <Header /> : null;
+}
+function ConditionalFooter() {
+  const location = useLocation();
+  return location.pathname !== '/'  && location.pathname !== '/signin'  && location.pathname !== '/Signup' ? <Footer /> : null;
 }
 
 export default App;
