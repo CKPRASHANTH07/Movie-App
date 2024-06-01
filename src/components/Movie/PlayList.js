@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import MovieApi from '../../api/Movieapi';
-import { API } from '../../api/MovieapisKey';
-import MovieCard from './MovieList/MovieCard';
-import MovieDetails from './MovieList/MovieDetails';
+import MovieApi from '../../api/Movieapi.js';
+import { API } from '../../api/MovieapisKey.js';
+import MovieCard from './MovieList/MovieCard.js';
+import MovieDetails from './MovieList/MovieDetails.js';
 
 const PlayList = () => {
     const [movies, setMovies] = useState([]);

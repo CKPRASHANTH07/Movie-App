@@ -11,15 +11,17 @@ auth_login.post('/login', async (req,res)=>{
         login_user(req.body.username,req.body.password).then((msg)=>{
             if (msg['status']==='Successfully logged in'){
             msg.accesstoken=generateAccessToken(req.body.username)
-            res.json(msg)
+            res.status(200).json(msg)
             }
             else{
-                res.json(msg)
+                res.status(401).json(msg)
             }
         }).catch((err)=>{
+            console.log(err)
             res.status(404).json({"status":err.message})
         })
     }catch{
+        console.log(err)
         res.status(404).json("error")
     }
 })

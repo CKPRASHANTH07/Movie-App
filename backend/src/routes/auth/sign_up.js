@@ -12,7 +12,7 @@ auth_signup.post('/sign-up', async (req,res)=>{
             msg.accesstoken=generateAccessToken(req.body.username)
             res.json(msg)
         }).catch((err)=>{
-            res.status(404).json({"status":err.message})
+            res.status(409).json({"status":err.message})
         })
     }catch{
         res.status(404).json("error")
