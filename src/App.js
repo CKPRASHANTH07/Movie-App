@@ -24,7 +24,6 @@ function App() {
           <Route path="/PlayList" element={<PlayList />} />
           <Route path="/Lists" element={<Lists />} />
           <Route path="/CreateList" element={<CreateList />} />
-
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ConditionalFooter />
