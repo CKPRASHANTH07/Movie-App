@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as  Router, Route, Routes  } from "react-router-dom";
-import Signin from "./Authentication/Signin";
-import Signup from "./Authentication/Signup";
+import Signin from "./components/Authentication/Signin";
+import Signup from "./components/Authentication/Signup";
 import PageNotFound from "./components/PageNotFound";
-import movieList from "./components/movieList";
+import MovieList from "./components/Movie/MovieList";
 import Home from "./components/Home";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
 function App() {
   return (
     <div>
@@ -16,7 +16,7 @@ function App() {
       <Route path="/" Component={Home}/>
       <Route path="/Signin" Component={Signin}/>
       <Route path="/Signup" Component={Signup}/>
-      <Route path="/movieList" Component={movieList}/>
+      <Route path="/movieList" Component={MovieList}/>
       <Route path="*" Component={PageNotFound}/>
       </Routes>
       <Footer />
