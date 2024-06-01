@@ -20,4 +20,23 @@ const signup_user=(async(username,password)=>{
 
 })
 
-export {signup_user}
+const login_user=(async(username,password)=>{
+    try {
+        const users=await Users.findOne({username:username})
+        if (users == null) {
+            return {'status':'Cannot find user'}
+          }
+          if(await bcrypt.compare(password, users.password)) {
+            return {'status':'Successfully logged in'}
+          } else {
+            return {'status':'Password is Wrong/Not Allowed'}
+          }
+        }catch(err){
+            console.log(err)
+            throw new Error("Error in Logging In")
+
+        }
+
+})
+
+export {signup_user,login_user}

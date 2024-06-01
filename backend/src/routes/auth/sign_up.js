@@ -1,14 +1,12 @@
 import express from 'express'
-import jwt from 'jsonwebtoken'
-import { Users } from '../../models/users.js'
 import { signup_user } from '../../controllers/auth.js'
 import { generateAccessToken } from '../../utils/create_token.js'
 
-const auth = express.Router()
+const auth_signup = express.Router()
 
 
 
-auth.post('/sign-up', async (req,res)=>{
+auth_signup.post('/sign-up', async (req,res)=>{
     try {
         signup_user(req.body.username,req.body.password).then((msg)=>{
             msg.accesstoken=generateAccessToken(req.body.username)
@@ -21,4 +19,4 @@ auth.post('/sign-up', async (req,res)=>{
     }
 })
 
-export {auth}
+export {auth_signup}
