@@ -1,4 +1,5 @@
-
+import { SECRET_ACCES_TOKEN } from "./config_env.js";
+import jwt from 'jsonwebtoken'
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
@@ -8,10 +9,11 @@ function authenticateToken(req, res, next) {
     }
 
     try {
-        const verified = jwt.verify(token, JWT_SECRET);
-        req.user = {verified,user};
+        const verified = jwt.verify(token, SECRET_ACCES_TOKEN);
+        req.user = verified;
         next();
     } catch (err) {
+        console.log(err)
         res.status(400).json({ message: 'Invalid Token' });
     }
   }

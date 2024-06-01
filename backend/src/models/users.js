@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+import { v4} from "uuid";
 const users=new mongoose.Schema({
     username:{
         type:String,
@@ -28,13 +28,22 @@ const playlists=new mongoose.Schema({
         type:String,
         required:true,
     },
-    movies: {
+    movies_metaData: {
         required:true,
-        type:Object
+        type:Array
       },
     create_date: {
         type: Date,
         default: Date.now,
+      },
+      isPublic:{
+        type:Boolean,
+        required:true
+      },
+      uniqueId:{
+        type:String,
+        default:v4,
+        unique:true
       }
 })
 
