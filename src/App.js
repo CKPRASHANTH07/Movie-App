@@ -10,7 +10,7 @@ import Header from "./components/common/Header.js";
 import Footer from "./components/common/Footer.js";
 import PlayList from "./components/Movie/PlayList.js";
 import Lists from "./components/Movie/MovieList/Lists.js";
-import CreateList from "./components/Movie/CreateList.js";
+import AddPlaylist from "./components/Movie/AddPlaylist.js";
 import { isAuthenticated } from "./auth.js";
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
           <Route path="/movieList" element={<ProtectedRoute><MovieList /></ProtectedRoute>}/>
           <Route path="/PlayList" element={<ProtectedRoute><PlayList /></ProtectedRoute>}/>
           <Route path="/Lists" element={<Lists />} />
-          <Route path="/CreateList" element={<CreateList />} />
+          <Route path="/AddPlaylist" element={<AddPlaylist />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ConditionalFooter />

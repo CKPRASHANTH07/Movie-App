@@ -7,7 +7,7 @@ const Header = () => {
     <div className='bg-black h-20 text-white text-center flex '>
         <Link to="/" className='mr-3 ml-3 mt-7'>Movie-App</Link>
         <Link to="/movieList" className='mr-3 mt-7'>MovieList</Link>
-        <Link to="/CreateList" className='mr-3 mt-7'>CreateList</Link>
+        <Link to="/AddPlaylist" className='mr-3 mt-7'>AddPlaylist</Link>
         <Link to="/PlayList" className='mr-3 mt-7'>PlayList</Link>
 
         <Link to="/Lists" className='mr-3 mt-7'>Lists</Link>
