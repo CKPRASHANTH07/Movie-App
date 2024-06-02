@@ -6,6 +6,7 @@ import MovieCard from './MovieCard.js';
 import MovieDetails from './MovieDetails.js';
 import axios from 'axios';
 import MovieDetails_main from './MovieDetails.js';
+import { BASE_URL } from '../../../config_env.js';
 const PlayList = () => {
     const {uuid}=useParams()
     const [playlist, setPlaylist] = useState([]);
@@ -16,7 +17,7 @@ const PlayList = () => {
     const fetchplay_name=async()=>{
         const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `http://localhost:3003/playlist/get-playlist?uuid=${uuid}`,
+                `${BASE_URL}/playlist/get-playlist?uuid=${uuid}`,
                 {},
                 {
                     headers: {
@@ -40,7 +41,7 @@ const PlayList = () => {
         try{
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `http://localhost:3003/playlist/get-playlist?uuid=${uuid}`,
+                `${BASE_URL}/playlist/get-playlist?uuid=${uuid}`,
                 {},
                 {
                     headers: {

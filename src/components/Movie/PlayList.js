@@ -5,6 +5,7 @@ import MovieCard from './MovieList/MovieCard.js';
 import MovieDetails from './MovieList/MovieDetails.js';
 import axios from 'axios';
 import MovieDetails_main from './MovieList/movieDetails_main.js';
+import { BASE_URL } from '../../config_env.js';
 const PlayList = () => {
     const [playlist, setPlaylist] = useState([]);
     const [movies, setMovies] = useState([]);
@@ -41,7 +42,7 @@ const PlayList = () => {
         try{
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                'http://localhost:3003/playlist/get-playlist',
+               `${BASE_URL}playlist/get-playlist`,
                 {},
                 {
                     headers: {
