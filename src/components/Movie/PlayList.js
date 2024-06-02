@@ -42,7 +42,7 @@ const PlayList = () => {
         try{
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-               `${BASE_URL}playlist/get-playlist`,
+               `https://movie-app-1-backend.onrender.complaylist/get-playlist`,
                 {},
                 {
                     headers: {

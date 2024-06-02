@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { BASE_URL } from '../../config_env.js';
 const Signin = () => {
+    console.log(BASE_URL)
     const [formData, setFormData] = useState({
         username: '',
         password: ''
@@ -15,7 +16,7 @@ const Signin = () => {
         event.preventDefault();
     
         try {
-            var response = await axios.post(`${BASE_URL}/login`, formData);
+            var response = await axios.post(`https://movie-app-1-backend.onrender.com/login`, formData);
             console.log(response.data.status);
             const accessToken  =response.data.accesstoken;
             // console.log(accessToken)

@@ -14,7 +14,7 @@ const AddPlaylist = () => {
       var cookie=localStorage.getItem('accessToken')
       let username=jwtDecode(cookie)
       console.log(isPublic,'boolean')
-      await axios.post(`${BASE_URL}playlist/add-playlist`, {
+      await axios.post(`https://movie-app-1-backend.onrender.complaylist/add-playlist`, {
         username:username.username,
         playlist_name: playlistName,
         movies: movies.split(',').map(movie => movie.trim()),

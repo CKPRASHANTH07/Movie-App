@@ -17,7 +17,7 @@ const PlayList = () => {
     const fetchplay_name=async()=>{
         const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `${BASE_URL}/playlist/get-playlist?uuid=${uuid}`,
+                `https://movie-app-1-backend.onrender.com/playlist/get-playlist?uuid=${uuid}`,
                 {},
                 {
                     headers: {
@@ -41,7 +41,7 @@ const PlayList = () => {
         try{
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `${BASE_URL}/playlist/get-playlist?uuid=${uuid}`,
+                `https://movie-app-1-backend.onrender.com/playlist/get-playlist?uuid=${uuid}`,
                 {},
                 {
                     headers: {

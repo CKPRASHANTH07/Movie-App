@@ -17,7 +17,7 @@ const Signup = () => {
         event.preventDefault();
     
         try {
-          var response = await axios.post(`${BASE_URL}/sign-up`, formData);
+          var response = await axios.post(`https://movie-app-1-backend.onrender.com/sign-up`, formData);
               console.log(response.data);
               const accessToken  =response.data.accesstoken;
             localStorage.setItem('accessToken', accessToken);
