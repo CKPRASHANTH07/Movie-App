@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { BASE_URL } from '../../config_env';
+import { BASE_URL } from '../../config_env.js';
 const AddPlaylist = () => {
   const [playlistName, setPlaylistName] = useState('');
   const [movies, setMovies] = useState('');
@@ -14,7 +14,7 @@ const AddPlaylist = () => {
       var cookie=localStorage.getItem('accessToken')
       let username=jwtDecode(cookie)
       console.log(isPublic,'boolean')
-      await axios.post(`${BASE_URL}playlist/add-playlist`, {
+      await axios.post(`http://localhost:3003playlist/add-playlist`, {
         username:username.username,
         playlist_name: playlistName,
         movies: movies.split(',').map(movie => movie.trim()),

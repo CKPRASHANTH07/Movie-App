@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { BASE_URL } from '../../config_env'
+import { BASE_URL } from '../../config_env.js'
 const Signup = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -17,7 +17,7 @@ const Signup = () => {
         event.preventDefault();
     
         try {
-          var response = await axios.post(`${BASE_URL}/sign-up`, formData);
+          var response = await axios.post(`http://localhost:3003/sign-up`, formData);
               console.log(response.data);
               const accessToken  =response.data.accesstoken;
             localStorage.setItem('accessToken', accessToken);

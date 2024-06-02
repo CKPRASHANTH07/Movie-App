@@ -42,7 +42,7 @@ const PlayList = () => {
         try{
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-               `${BASE_URL}playlist/get-playlist`,
+               `http://localhost:3003playlist/get-playlist`,
                 {},
                 {
                     headers: {
