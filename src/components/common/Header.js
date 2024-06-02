@@ -9,6 +9,7 @@ const Header = () => {
         <Link to="/movieList" className='mr-3 mt-7'>MovieList</Link>
         <Link to="/AddPlaylist" className='mr-3 mt-7'>AddPlaylist</Link>
         <Link to="/PlayList" className='mr-3 mt-7'>PlayList</Link>
+        <Link to="/PlaylistPage" className='mr-3 mt-7'>PlayListPage</Link>
 
         {/* <Link to="/Lists" className='mr-3 mt-7'>Lists</Link> */}
         {/* <p className='mr-3 mt-7'>Profile</p> */}
