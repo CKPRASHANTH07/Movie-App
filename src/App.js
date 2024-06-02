@@ -26,8 +26,8 @@ function App() {
           {/* <ProtectedRoute path="/PlayList" element={<PlayList />} /> */}
           <Route path="/movieList" element={<ProtectedRoute><MovieList /></ProtectedRoute>}/>
           <Route path="/PlayList" element={<ProtectedRoute><PlayList /></ProtectedRoute>}/>
+          <Route path="/shared_playlist/:uuid" element={<ProtectedRoute><PlaylistPage /></ProtectedRoute>}/>
           <Route path="/AddPlaylist" element={<ProtectedRoute><AddPlaylist /></ProtectedRoute>}/>
-          <Route path="/playlistPage" element={<ProtectedRoute><PlaylistPage /></ProtectedRoute>} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
         <ConditionalFooter />

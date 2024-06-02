@@ -21,12 +21,12 @@ const playlists=new mongoose.Schema({
     username:{
         type:String,
         required:true,
-        unique: true,
 
     },
     name_of_the_playlist:{
         type:String,
         required:true,
+        unique:true
     },
     movies_metaData: {
         required:true,
