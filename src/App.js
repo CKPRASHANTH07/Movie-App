@@ -9,7 +9,7 @@ import Home from "./components/Home.js";
 import Header from "./components/common/Header.js";
 import Footer from "./components/common/Footer.js";
 import PlayList from "./components/Movie/PlayList.js";
-import Lists from "./components/Movie/MovieList/Lists.js";
+// import Lists from "./components/Movie/MovieList/Lists.js";
 import AddPlaylist from "./components/Movie/AddPlaylist.js";
 import { isAuthenticated } from "./auth.js";
 function App() {
@@ -25,7 +25,8 @@ function App() {
           {/* <ProtectedRoute path="/PlayList" element={<PlayList />} /> */}
           <Route path="/movieList" element={<ProtectedRoute><MovieList /></ProtectedRoute>}/>
           <Route path="/PlayList" element={<ProtectedRoute><PlayList /></ProtectedRoute>}/>
-          <Route path="/Lists" element={<Lists />} />
+          <Route path="/AddPlaylist" element={<ProtectedRoute><AddPlaylist /></ProtectedRoute>}/>
+          {/* <Route path="/Lists" element={<Lists />} /> */}
           <Route path="/AddPlaylist" element={<AddPlaylist />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

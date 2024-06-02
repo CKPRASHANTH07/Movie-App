@@ -10,8 +10,8 @@ const Header = () => {
         <Link to="/AddPlaylist" className='mr-3 mt-7'>AddPlaylist</Link>
         <Link to="/PlayList" className='mr-3 mt-7'>PlayList</Link>
 
-        <Link to="/Lists" className='mr-3 mt-7'>Lists</Link>
-        <p className='mr-3 mt-7'>Profile</p>
+        {/* <Link to="/Lists" className='mr-3 mt-7'>Lists</Link> */}
+        {/* <p className='mr-3 mt-7'>Profile</p> */}
 
         </div>
         </div>
