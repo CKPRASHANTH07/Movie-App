@@ -3,19 +3,31 @@ import MovieApi from '../../api/Movieapi.js';
 import { API } from '../../api/MovieapisKey.js';
 import MovieCard from './MovieList/MovieCard.js';
 import MovieDetails from './MovieList/MovieDetails.js';
-
+import axios from 'axios';
 const PlayList = () => {
     const [movies, setMovies] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState(null);
 
-    const fetchMovies = async (movietext) => {
-        try {
-            const response = await MovieApi.get(`?apikey=${API}&s=${movietext}&type=movie`);
-            setMovies(response.data.Search || []);
-            console.log(response);
-        } catch (err) {
-            console.log(err);
-        }
+    const fetchMovies = async () => {
+        try{
+            const token = localStorage.getItem('accessToken');
+            const response = await axios.post(
+                'http://localhost:3003/playlist/get-playlist',
+                {},
+                {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                }
+            );
+        const movieTitles = response.data.MoviesInfo;
+        const moviePromises = movieTitles.map(movie => axios.get(`http://www.omdbapi.com/?apikey=${API}&t=${movie}`));
+        const movieDetails = await Promise.all(moviePromises);
+        setMovies(movieDetails.map(detail => detail.data));
+        console.log(movieDetails);
+    } catch (err) {
+        console.log(err);
+    }
     };
 
     const fetchMovieDetails = async (movieId) => {
@@ -28,7 +40,7 @@ const PlayList = () => {
     };
 
     useEffect(() => {
-        fetchMovies('Batman');
+        fetchMovies();
     }, []);
 
     const handleMovieClick = (movieId) => {

@@ -20,7 +20,7 @@ const Signup = () => {
           var response = await axios.post('http://localhost:3003/sign-up', formData);
               console.log(response.data);
               const accessToken  =response.data.accesstoken;
-            localStorage.setItem('accessToken-site', accessToken);
+            localStorage.setItem('accessToken', accessToken);
             console.log(response.status)
                 window.location.href = '/Signin';
         } catch (error) {

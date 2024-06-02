@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { jwtDecode } from 'jwt-decode';
 const AddPlaylist = () => {
-  const [username, setUsername] = useState('');
   const [playlistName, setPlaylistName] = useState('');
   const [movies, setMovies] = useState('');
   const [isPublic, setIsPublic] = useState(false);
@@ -11,18 +10,22 @@ const AddPlaylist = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/playlist/add-playlist', {
-        username,
+      var cookie=localStorage.getItem('accessToken')
+      let username=jwtDecode(cookie)
+      // console.log(username)
+      await axios.post('http://localhost:3003/playlist/add-playlist', {
+        username:username.username,
         playlist_name: playlistName,
         movies: movies.split(',').map(movie => movie.trim()),
         isPublic
       }, {
         headers: {
-          Authorization: `Bearer ${localStorage.getItem('token')}`
+          Authorization: `Bearer ${cookie}`
         }
       });
       setMessage('Playlist added successfully!');
     } catch (err) {
+      console.log(err)
       setMessage('An error occurred. Please try again.');
     }
   };
@@ -30,16 +33,6 @@ const AddPlaylist = () => {
   return (
     <div className="bg-black/70 my-20 w-[500px] md:ml-[500px] p-10 rounded-md shadow-md">
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="flex flex-col">
-          <label className="text-white mb-2">Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className="p-2 rounded-md"
-          />
-        </div>
         <div className="flex flex-col">
           <label className="text-white mb-2">Playlist Name:</label>
           <input
