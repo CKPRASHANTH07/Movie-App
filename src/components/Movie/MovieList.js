@@ -64,6 +64,7 @@ const MovieList = () => {
                         key={movie.imdbID}
                         movie={movie}
                         onClick={() => handleMovieClick(movie.imdbID)}
+                        showShareButton={false}
                     />
                 ))}
             </ul>

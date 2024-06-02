@@ -10,7 +10,7 @@ function authenticateToken(req, res, next) {
 
     try {
         const verified = jwt.verify(token, SECRET_ACCES_TOKEN);
-        req.user = verified;
+        req.user = verified.username;
         next();
     } catch (err) {
         console.log(err)

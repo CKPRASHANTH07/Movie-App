@@ -18,11 +18,13 @@ const Signin = () => {
             var response = await axios.post('http://localhost:3003/login', formData);
             console.log(response.data.status);
             const accessToken  =response.data.accesstoken;
-            console.log(accessToken)
-          localStorage.setItem('accessToken-site', accessToken);
+            // console.log(accessToken)
+            // console.log(jwtDecode(accessToken))
+          localStorage.setItem('accessToken', accessToken);
           console.log(response.status)
             window.location.href = '/movieList';
         } catch (error) {
+            console.log(error)
             if( error.response.status ===401){
                 setError('Username/Password is Incorrect')
             }
