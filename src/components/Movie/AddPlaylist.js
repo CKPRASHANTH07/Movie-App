@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 const AddPlaylist = () => {
   const [playlistName, setPlaylistName] = useState('');
   const [movies, setMovies] = useState('');
-  const [isPublic, setIsPublic] = useState(false);
+  const [isPublic, setIsPublic] = useState('');
   const [message, setMessage] = useState('');
 
   const handleSubmit = async (e) => {
@@ -12,12 +12,12 @@ const AddPlaylist = () => {
     try {
       var cookie=localStorage.getItem('accessToken')
       let username=jwtDecode(cookie)
-      // console.log(username)
+      console.log(isPublic,'boolean')
       await axios.post('http://localhost:3003/playlist/add-playlist', {
         username:username.username,
         playlist_name: playlistName,
         movies: movies.split(',').map(movie => movie.trim()),
-        isPublic
+        isPublic:isPublic
       }, {
         headers: {
           Authorization: `Bearer ${cookie}`
@@ -26,7 +26,7 @@ const AddPlaylist = () => {
       setMessage('Playlist added successfully!');
     } catch (err) {
       console.log(err)
-      setMessage('An error occurred. Please try again.');
+      setMessage('Playlist Already exists. Try new name');
     }
   };
 
@@ -57,8 +57,8 @@ const AddPlaylist = () => {
           <label className="text-white mr-2">Public:</label>
           <input
             type="checkbox"
-            checked={isPublic}
-            onChange={(e) => setIsPublic(e.target.checked)}
+            checked={isPublic==='True'}
+            onChange={(e) => setIsPublic(e.target.checked?'True':'False')}
             className="rounded-md"
           />
         </div>

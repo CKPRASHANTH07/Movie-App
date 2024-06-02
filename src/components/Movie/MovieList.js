@@ -4,6 +4,7 @@ import { API } from '../../api/MovieapisKey.js';
 import SearchBar from './MovieList/SearchBar.js';
 import MovieCard from './MovieList/MovieCard.js';
 import MovieDetails from './MovieList/MovieDetails.js';
+import MovieCard_main from './MovieList/movieCard_main.js';
 
 const MovieList = () => {
     const [movies, setMovies] = useState([]);
@@ -60,7 +61,7 @@ const MovieList = () => {
             <h1 className='text-center text-4xl my-10'>Movie List</h1>
             <ul className='flex flex-wrap justify-center'>
                 {movies.map((movie) => (
-                    <MovieCard
+                    <MovieCard_main
                         key={movie.imdbID}
                         movie={movie}
                         onClick={() => handleMovieClick(movie.imdbID)}
