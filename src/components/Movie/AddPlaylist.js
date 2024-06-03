@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { BASE_URL } from '../../config_env.js';
 const AddPlaylist = () => {
   const [playlistName, setPlaylistName] = useState('');
   const [movies, setMovies] = useState('');

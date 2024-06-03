@@ -1,48 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import MovieApi from '../../api/Movieapi.js';
-import { API } from '../../api/MovieapisKey.js';
-import MovieCard from './MovieList/MovieCard.js';
-import MovieDetails from './MovieList/MovieDetails.js';
 import axios from 'axios';
-import MovieDetails_main from './MovieList/movieDetails_main.js';
-import { BASE_URL } from '../../config_env.js';
+import MovieCard from './MovieList/MovieCard.js';
+import { API } from '../../api/MovieapisKey.js';
+
 const PlayList = () => {
     const [playlist, setPlaylist] = useState([]);
     const [movies, setMovies] = useState([]);
-    const [selectedMovie, setSelectedMovie] = useState([]);
+    const [selectedMovies, setSelectedMovies] = useState(null);
 
-    const fetchMovies = async (data) => {
-        try{
-            // const token = localStorage.getItem('accessToken');
-            // const response = await axios.post(
-            //     'http://localhost:3003/playlist/get-playlist',
-            //     {},
-            //     {
-            //         headers: {
-            //             'Authorization': `Bearer ${token}`
-            //         }
-            //     }
-            // );
-            console.log(data)
-        const movieTitles = data
-        const moviePromises = movieTitles.map(movie => axios.get(`http://www.omdbapi.com/?apikey=${API}&t=${movie}`));
-        const movieDetails = await Promise.all(moviePromises);
-        console.log(movieDetails,"movieDetals")
-        setMovies(movieDetails.map(detail => detail.data));
-        console.log(movies,"setmovies")
-        console.log(movieDetails.data)
-        setSelectedMovie(movieDetails);
-        console.log(movieDetails);
-    } catch (err) {
-        console.log(err);
-    }
+    const fetchMovies = async (movieTitles) => {
+        try {
+            const moviePromises = movieTitles.map(movie => axios.get(`http://www.omdbapi.com/?apikey=${API}&t=${movie}`));
+            const movieDetails = await Promise.all(moviePromises);
+            setMovies(movieDetails.map(detail => detail.data));
+            setSelectedMovies(movieDetails.map(detail => detail.data));
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     const fetchPlaylists = async () => {
-        try{
+        try {
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-               `http://localhost:3003/playlist/get-playlist`,
+                `http://localhost:3003/playlist/get-playlist`,
                 {},
                 {
                     headers: {
@@ -50,72 +31,64 @@ const PlayList = () => {
                     }
                 }
             );
-            console.log(response.data.playlists)
-        // const playlist_titles = response.data.playlists.map(playlist => playlist.playlistName).flat();
-        // const moviePromises = movieTitles.map(movie => axios.get(`http://www.omdbapi.com/?apikey=${API}&t=${movie}`));
-        // const movieDetails = await Promise.all(moviePromises);
-        setPlaylist(response.data.playlists);
-        // fetchMovies(response.data.playlists);
-        // console.log(playlist_titles);
-    } catch (err) {
-        console.log(err);
-    }
-    };
-
-    const fetchMovieDetails = async (movieId) => {
-        try {
-            const response = await MovieApi.get(`?apikey=${API}&i=${movieId}`);
-            setSelectedMovie(response.data);
+            setPlaylist(response.data.playlists);
         } catch (err) {
             console.log(err);
         }
     };
 
-    // useEffect(() => {
-    //     fetchMovies();
-    // }, []);
     useEffect(() => {
         fetchPlaylists();
     }, []);
+
     const handleClosePopup = () => {
-        setSelectedMovie(null);
+        setSelectedMovies(null);
     };
 
-    const handleMovieClick = (movieId) => {
-        console.log(movieId,"hop")
-        fetchMovies(movieId);
+    const handleMovieClick = (movieTitles) => {
+        fetchMovies(movieTitles);
     };
-    console.log('Selected Movies:', selectedMovie);
+
     return (
         <div>
-           
             <h1 className='text-center text-4xl my-10'>Your PlayList</h1>
             <ul className='flex flex-wrap justify-center'>
-                {playlist.map((movie) => (
+                {playlist.map((playlistItem) => (
                     <MovieCard
-                        key={movie.imdbID}
-                        movie={movie.playlistName}
-                        onClick={() => handleMovieClick(movie.MoviesInfo)}
+                        key={playlistItem.imdbID}
+                        movie={playlistItem.playlistName}
+                        onClick={() => handleMovieClick(playlistItem.MoviesInfo)}
                         showShareButton={true}
                         uuid={playlist}
                     />
                 ))}
             </ul>
-            {selectedMovie && (
+            {selectedMovies && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white p-4 rounded-lg relative">
+                    <div className="bg-white p-4 rounded-lg relative max-h-full overflow-y-auto">
                         <button 
                             className="absolute top-2 right-2 text-black text-2xl font-bold" 
                             onClick={handleClosePopup}
                         >
                             &times;
                         </button>
-                        {selectedMovie.map((movie, index) => (
+                        {selectedMovies.map((movie, index) => (
                             <div key={index} className="mb-4">
-                                <h2 className="text-2xl">{movie.data.Title}</h2>
-                                <p><strong>Year:</strong> {movie.data.Year}</p>
-                                <p><strong>Genre:</strong> {movie.data.Genre}</p>
-                                <p><strong>Plot:</strong> {movie.data.Plot}</p>
+                                <h2 className='text-4xl mb-4 font-bold'>{movie.Title}</h2>
+                                <p><strong>Year:</strong> {movie.Year}</p>
+                                <p><strong>Genre:</strong> {movie.Genre}</p>
+                                <p><strong>Director:</strong> {movie.Director}</p>
+                                <p><strong>Actors:</strong> {movie.Actors}</p>
+                                <p><strong>Plot:</strong> {movie.Plot}</p>
+                                <p><strong>Rated:</strong> {movie.Rated}</p>
+                                <p><strong>Released:</strong> {movie.Released}</p>
+                                <p><strong>Runtime:</strong> {movie.Runtime}</p>
+                                <p><strong>Writer:</strong> {movie.Writer}</p>
+                                <p><strong>Language:</strong> {movie.Language}</p>
+                                <p><strong>Country:</strong> {movie.Country}</p>
+                                <p><strong>Awards:</strong> {movie.Awards}</p>
+                                <p><strong>imdbRating:</strong> {movie.imdbRating}</p>
+                                <p><strong>BoxOffice:</strong> {movie.BoxOffice}</p>
                             </div>
                         ))}
                     </div>
@@ -124,6 +97,5 @@ const PlayList = () => {
         </div>
     );
 };
-
 
 export default PlayList;

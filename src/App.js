@@ -20,7 +20,7 @@ function App() {
         <ConditionalHeader />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Signin" element={<Signin />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/Signup" element={<Signup />} />
           {/* <ProtectedRoute path="/movieList" element={<MovieList />} /> */}
           {/* <ProtectedRoute path="/PlayList" element={<PlayList />} /> */}
@@ -37,16 +37,16 @@ function App() {
 }
 const ProtectedRoute = ({ children }) => {
   const authed = isAuthenticated() 
-  return authed ? children : <Navigate to="/Signin" />;
+  return authed ? children : <Navigate to="/signin" />;
 }
 
 function ConditionalHeader() {
   const location = useLocation();
-  return location.pathname !== '/'  && location.pathname !== '/signin'  && location.pathname !== '/Signup' ? <Header /> : null;
+  return location.pathname !== '/'  && location.pathname !== '/signin'  && location.pathname !== '/Signup' && location.pathname !== '/signup' && location.pathname !== '/Signin' ? <Header /> : null;
 }
 function ConditionalFooter() {
   const location = useLocation();
-  return location.pathname !== '/'  && location.pathname !== '/signin'  && location.pathname !== '/Signup' ? <Footer /> : null;
+  return location.pathname !== '/'  && location.pathname !== '/signin'  && location.pathname !== '/Signup' && location.pathname !== '/signup' && location.pathname !== '/Signin' ? <Footer /> : null;
 }
 
 export default App;

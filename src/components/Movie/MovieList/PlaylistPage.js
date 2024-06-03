@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import MovieApi from '../../../api/Movieapi.js';
 import { useParams } from 'react-router-dom';
 import { API } from '../../../api/MovieapisKey.js';
 import MovieCard from './MovieCard.js';
-import MovieDetails from './MovieDetails.js';
 import axios from 'axios';
-import MovieDetails_main from './MovieDetails.js';
-import { BASE_URL } from '../../../config_env.js';
 const PlayList = () => {
     const {uuid}=useParams()
     const [playlist, setPlaylist] = useState([]);
@@ -59,15 +55,6 @@ const PlayList = () => {
         console.log(err);
     }
     };
-
-//     const fetchMovieDetails = async (movieId) => {
-//         try {
-//             const response = await MovieApi.get(`?apikey=${API}&i=${movieId}`);
-//             setSelectedMovie(response.data);
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     };
 
     useEffect(() => {
         fetchPlaylists();

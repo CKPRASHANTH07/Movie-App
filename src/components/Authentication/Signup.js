@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { BASE_URL } from '../../config_env.js'
 const Signup = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -22,7 +21,7 @@ const Signup = () => {
               const accessToken  =response.data.accesstoken;
             localStorage.setItem('accessToken', accessToken);
             console.log(response.status)
-                window.location.href = '/Signin';
+                window.location.href = '/signin';
         } catch (error) {
             if( error.response.status ===409){
                 setError('Username Already Exists. Login Instead')

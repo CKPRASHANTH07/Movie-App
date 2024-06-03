@@ -18,6 +18,7 @@ const Header = () => {
           {username && (
             <p className='mr-3 mt-7'>Logged in: {username.username}</p>
           )}
+          <Link to="/signin" className='mr-3 mt-7'>Logout</Link>
         </div>
       </div>
     </div>

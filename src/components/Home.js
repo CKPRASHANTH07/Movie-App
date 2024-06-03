@@ -16,7 +16,7 @@ const Home = () => {
           </p>
           <div className='space-x-4 text-center'>
             <Link to='/signin' className=' bg-black text-white p-3 rounded-2xl'>Sign In</Link>
-            <Link to='/Signup' className='bg-white text-black p-3 rounded-2xl'>Sign Up</Link>
+            <Link to='/signup' className='bg-white text-black p-3 rounded-2xl'>Sign Up</Link>
           </div>
         </div>
       </div>
