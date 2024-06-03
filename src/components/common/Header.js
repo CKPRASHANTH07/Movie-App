@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 const Header = () => {
   var cookie=localStorage.getItem('accessToken')
-  let username=jwtDecode(cookie)
+  if(cookie){
+  var username=jwtDecode(cookie)
+  }
   return (
     <div>
       <div className='bg-black h-20 text-white text-center flex justify-between items-center px-4'>
