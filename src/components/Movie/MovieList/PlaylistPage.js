@@ -13,7 +13,7 @@ const PlayList = () => {
     const fetchplay_name=async()=>{
         const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `http://localhost:3003/playlist/get-playlist?uuid=${uuid}`,
+                `${process.env.REACT_APP_BASE_URL}playlist/get-playlist?uuid=${uuid}`,
                 {},
                 {
                     headers: {
@@ -37,7 +37,7 @@ const PlayList = () => {
         try{
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `http://localhost:3003/playlist/get-playlist?uuid=${uuid}`,
+                `${process.env.REACT_APP_BASE_URL}playlist/get-playlist?uuid=${uuid}`,
                 {},
                 {
                     headers: {

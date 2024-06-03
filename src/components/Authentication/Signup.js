@@ -16,7 +16,7 @@ const Signup = () => {
         event.preventDefault();
     
         try {
-          var response = await axios.post(`http://localhost:3003/sign-up`, formData);
+          var response = await axios.post(`${process.env.REACT_APP_BASE_URL}sign-up`, formData);
               console.log(response.data);
               const accessToken  =response.data.accesstoken;
             localStorage.setItem('accessToken', accessToken);

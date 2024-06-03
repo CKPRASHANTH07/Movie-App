@@ -13,7 +13,7 @@ const AddPlaylist = () => {
       var cookie=localStorage.getItem('accessToken')
       let username=jwtDecode(cookie)
       console.log(isPublic,'boolean')
-      await axios.post(`http://localhost:3003/playlist/add-playlist`, {
+      await axios.post(`${process.env.REACT_APP_BASE_URL}playlist/add-playlist`, {
         username:username.username,
         playlist_name: playlistName,
         movies: movies.split(',').map(movie => movie.trim()),

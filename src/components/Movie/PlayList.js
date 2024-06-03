@@ -4,6 +4,7 @@ import MovieCard from './MovieList/MovieCard.js';
 import { API } from '../../api/MovieapisKey.js';
 
 const PlayList = () => {
+    console.log(process.env.REACT_APP_BASE_URL)
     const [playlist, setPlaylist] = useState([]);
     const [movies, setMovies] = useState([]);
     const [selectedMovies, setSelectedMovies] = useState(null);
@@ -23,7 +24,7 @@ const PlayList = () => {
         try {
             const token = localStorage.getItem('accessToken');
             const response = await axios.post(
-                `http://localhost:3003/playlist/get-playlist`,
+                `${process.env.REACT_APP_BASE_URL}playlist/get-playlist`,
                 {},
                 {
                     headers: {
