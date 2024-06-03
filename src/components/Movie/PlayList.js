@@ -11,7 +11,7 @@ const PlayList = () => {
 
     const fetchMovies = async (movieTitles) => {
         try {
-            const moviePromises = movieTitles.map(movie => axios.get(`http://www.omdbapi.com/?apikey=${API}&t=${movie}`));
+            const moviePromises = movieTitles.map(movie => axios.get(`https://www.omdbapi.com/?apikey=${API}&t=${movie}`));
             const movieDetails = await Promise.all(moviePromises);
             setMovies(movieDetails.map(detail => detail.data));
             setSelectedMovies(movieDetails.map(detail => detail.data));

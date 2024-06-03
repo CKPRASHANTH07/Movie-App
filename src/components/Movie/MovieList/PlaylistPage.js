@@ -47,7 +47,7 @@ const PlayList = () => {
             );
             console.log(response.data.MoviesInfo)
         const playlist_titles = response.data.MoviesInfo
-        const moviePromises = playlist_titles.map(movie => axios.get(`http://www.omdbapi.com/?apikey=${API}&t=${movie}`));
+        const moviePromises = playlist_titles.map(movie => axios.get(`https://www.omdbapi.com/?apikey=${API}&t=${movie}`));
         const movieDetails = await Promise.all(moviePromises);
         console.log(movieDetails)
         setMovies(movieDetails);
