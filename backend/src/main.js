@@ -9,11 +9,11 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Setting up static file serving
-app.use(express.static(path.join(__dirname, '../dist'))); // Correct path to frontend build directory
+app.use(express.static(path.join(__dirname, '/dist'))); // Correct path to frontend build directory
 
 // Handling all routes to serve the index.html file
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist', 'index.html')); // Correct path to index.html
+  res.sendFile(path.join(__dirname, '/dist', 'index.html')); // Correct path to index.html
 });
 
 // Starting the server
