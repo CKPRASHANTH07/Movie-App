@@ -27,12 +27,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "frontend": "cross-env PORT=3001 react-scripts start",
-    "backend": "node backend/src/main.js",
-    "build": " npm install && cd backend && npm install && cd ..",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
+  "frontend": "cross-env PORT=3001 react-scripts start",
+  "backend": "node backend/src/main.js",
+  "build": "npm install && cd frontend && npm install && npm run build && cd ../backend && npm install",
+  "start": "concurrently \"npm run frontend\" \"npm run backend\"",
+  "test": "react-scripts test",
+  "eject": "react-scripts eject"
+},
+
   "eslintConfig": {
     "extends": [
       "react-app",
