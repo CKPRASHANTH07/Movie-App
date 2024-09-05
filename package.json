@@ -28,7 +28,7 @@
   "scripts": {
     "frontend": "react-scripts start",
     "backend": "node backend/src/main.js",
-    "build": " npm install && npm run build && cd backend && npm install",
+    "build": "cd backend && npm install && npm run build && cd .. && npm install && npm run build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
