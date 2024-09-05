@@ -15,4 +15,4 @@ app.use(cors());
 app.use(auth_login, auth_signup, read_playlists, create_playlist);
 app.use(morgan("dev"));
 
-export { app };
+export default app;
