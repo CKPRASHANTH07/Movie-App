@@ -1,10 +1,8 @@
 import { config as dotenvConfig } from "dotenv";
 dotenvConfig();
-console.log("env", process.env.MONGODB_URI);
 const SECRET_ACCES_TOKEN = process.env.SECRET_ACCES_TOKEN;
 const MONGODB_URI = process.env.MONGODB_URI;
 const HOST = process.env.HOST;
-const PORT = process.env.PORT;
-console.log(PORT);
+const PORTT = process.env.PORTT;
 
-export { SECRET_ACCES_TOKEN, MONGODB_URI, HOST, PORT };
+export { SECRET_ACCES_TOKEN, MONGODB_URI, HOST, PORTT };
