@@ -1,17 +1,32 @@
 import express from 'express'; // Import express
 import path from 'path';
-import { PORT, HOST } from '../src/utils/config_env.js'; // Correct path for config_env.js
-import app from '../src/routes/server.js'; // Assuming server.js exports the app instance
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+
+dotenv.config();
+
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGODB_URI) // Ensure MONGO is defined in your .env file
+  .then(() => {
+    console.log('Connected to MongoDB!');
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 const __dirname = path.resolve();
+const server = express();
 
-app.use(express.static(path.join(__dirname, '../../src')));
+server.use(express.json());
+server.use(cookieParser());
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,'src', 'index.js'));
-})
+// Serve static files from the React app
+server.use(express.static(path.join(__dirname, '../dist')));
 
-// Starting the server
-app.listen(PORT, HOST, () =>
-  console.log(`Running on port ${PORT} and HOST ${HOST}`)
-);
+// Handle any requests that don't match the API routes
+server.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../dist', 'index.html'));
+});
+

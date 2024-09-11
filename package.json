@@ -10,6 +10,7 @@
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "concurrently": "^8.2.2",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
     "dotenv": "^16.4.5",
@@ -29,7 +30,8 @@
   },
   "scripts": {
     "frontend": "cross-env PORT=3001 react-scripts start",
-    "start": "npm install --prefix backend && node backend/src/main.js",
+    "backend": "nodemon backend/src/main.js",
+    "start": "node backend/src/main.js",
     "build": "npm install ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
