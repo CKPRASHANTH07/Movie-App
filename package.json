@@ -29,8 +29,8 @@
   },
   "scripts": {
     "frontend": "cross-env PORT=3001 react-scripts start",
-    "start": "node backend/src/main.js",
-    "build": "npm install && npm run build ",
+    "start": "npm install --prefix backend && node backend/src/main.js",
+    "build": "npm install ",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
